@@ -1,7 +1,7 @@
 "use client"
 import { createContext, useContext, useState } from "react";
-import {User } from "@/data/dummyData";
-
+import {User } from "@/data/User";
+import Layout from "@/components/Navbar";
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) =>Promise<void>;

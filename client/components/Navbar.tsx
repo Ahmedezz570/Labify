@@ -7,7 +7,13 @@ import { Lock, Unlock } from "lucide-react";
 import useMobile from '@/hooks/use-mobile';
 import Link from 'next/link';
 import Image from "next/image"
-const Layout = () => {
+interface LayoutProps {
+  children: React.ReactNode;
+  isAuthenticated?: boolean;
+  userRole?: "student" | "admin";
+  userName?: string;
+}
+const Layout = ({children}:LayoutProps) => {
     const {user} = useAuth();
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -42,11 +48,11 @@ const Layout = () => {
           </div>
           <div className="flex-1"></div>
           <div className="flex items-center gap-2">
-            <Button className='mr-2' size="icon"  variant="ghost" title='LogOut'>
+            <Button className='mr-2 hover:bg-blue-900 cursor-pointer' size="icon"  variant="ghost" title='LogOut'>
                <LogOut className="h-5 w-5 text-white" />
                <span className="sr-only">LogOut</span>
             </Button>
-            <Button variant="ghost" size="icon" onClick={()=>{console.log("LoLLLL")}}>
+            <Button className ="hover:bg-blue-900 cursor-pointer"variant="ghost" size="icon" onClick={()=>{console.log("LoLLLL")}}>
                {isDisabled ? <Lock className="h-5 w-5 text-white" /> : <Unlock className="h-5 w-5 text-white" />}
             </Button>
           </div>
@@ -86,10 +92,11 @@ const Layout = () => {
           {true && (
             <div className="mb-6">
               <h1 className="text-2xl font-bold tracking-tight text-white/20">
-                Welcome to Labify Dashboard
+                Welcome to Labify
               </h1>
             </div>
           )}
+          {children}
         </main>
         </div>      
    </div>
@@ -104,25 +111,25 @@ function renderSidebarContent(isAuthenticated: boolean, userRole: "student" | "a
           
       
 
-            <Link href="/dashboard" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
+            <Link href="/Dashboard" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-900">
               <LayoutDashboard className="h-5 w-5" />
               <span>Dashboard</span>
             </Link>
-            <Link href="/equipment" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
+            <Link href="/equipment" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-900">
               <Package className="h-5 w-5" />
               <span>Equipments</span>
             </Link>
-            <Link href="/requests" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
+            <Link href="/requests" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-900">
               <ClipboardCheck className="h-5 w-5" />
               <span>Requests</span>
             </Link>
-            <Link href="/materials" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
+            <Link href="/materials" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-900">
                <Info className="h-5 w-5" />
               <span>Materials</span>
             </Link>
            
             {userRole === "student" && (
-               <Link href="/profile" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
+               <Link href="/profile" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-900">
               <User className="h-5 w-5" />
               <span>Profile</span>
             </Link>

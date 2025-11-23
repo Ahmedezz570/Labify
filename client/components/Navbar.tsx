@@ -108,9 +108,6 @@ function renderSidebarContent(isAuthenticated: boolean, userRole: "student" | "a
       <div className="flex flex-col h-full bg-blue-950 text-white">
         <div className="flex-1 overflow-auto py-2">
           <nav className="grid gap-1 px-2">
-          
-      
-
             <Link href="/Dashboard" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-blue-900">
               <LayoutDashboard className="h-5 w-5" />
               <span>Dashboard</span>
@@ -156,7 +153,6 @@ function renderSidebarContent(isAuthenticated: boolean, userRole: "student" | "a
           <div className="flex items-center gap-3 py-2">
             <User className="h-5 w-5" />
             <span className="text-sm font-medium">
-              {/* {userRole === "admin" ? "Admin" : "cgvhgvh"} */}
               {"Guest"}
             </span>
           </div>

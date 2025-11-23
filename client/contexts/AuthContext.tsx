@@ -17,7 +17,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     name: 'Ahmed ezz aldin ',
     email: 'ahmedez570@gmail.com',
     password: '1234567',
-    role: 'admin',
+    role: 'student',
     createdAt: '2025-11-11'
   });
   

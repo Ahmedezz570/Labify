@@ -1,8 +1,17 @@
 "use client";
 import React from 'react'
+import TotalEquipments from '@/shared/totalEquipments';
+import Categories from '@/shared/categories';
+import RecentEquipments from '@/shared/RecentEquipments';
 const AdminDashboard = () => {
   return (
-    <h1 className='text-white/20 text-4xl'>this user is a Admin</h1>
+    <>
+   <div className="flex flex-col gap-8">
+  <Categories />
+  <RecentEquipments />
+</div>
+
+    </>
   )
 }
 
